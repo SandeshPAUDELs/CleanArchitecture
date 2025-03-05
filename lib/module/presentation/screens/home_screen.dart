@@ -18,7 +18,12 @@ class HomeScreen extends StatelessWidget {
       {
         'title': 'ZPID Properties',
         'route': AppRoutesName.zpidSchool,
-      }
+      },
+      {
+        'title': 'Photo Properties',
+        'route': AppRoutesName.photoProperties,
+      },
+      
     ];
     return Scaffold(
       appBar: AppBar(

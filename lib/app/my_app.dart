@@ -1,5 +1,6 @@
 import 'package:clean_arch/core/config/routes/routes.dart';
 import 'package:clean_arch/core/config/routes/routes_name.dart';
+import 'package:clean_arch/module/presentation/bLoc/photo_properties/photo_propertied_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties/search_properties_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_bloc.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
             create: (context) => sl<SearchPropertiesBloc>()),
         BlocProvider(create: (context) => sl<SearchPropertiesByAddressBloc>()),
         BlocProvider(create: (context) => sl<ZpidPropertiesV2Bloc>()),
+        BlocProvider(create: (context) => sl<PhotoPropertiesBloc>()),
       ],
       child: MaterialApp(
         title: 'Clean Architecture',
