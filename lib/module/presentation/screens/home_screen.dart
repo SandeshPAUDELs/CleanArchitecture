@@ -10,7 +10,11 @@ class HomeScreen extends StatelessWidget {
       {
         'title': 'Properties Search',
         'route': AppRoutesName.searchProperties,
-      }
+      },
+      {
+        'title': 'Properties Search by Address',
+        'route': AppRoutesName.searchAddress,
+      },
     ];
     return Scaffold(
       appBar: AppBar(

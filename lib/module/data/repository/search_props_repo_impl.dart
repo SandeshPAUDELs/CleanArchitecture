@@ -1,4 +1,4 @@
-import 'package:clean_arch/module/data/repository/search_props_repo.dart';
+import 'package:clean_arch/module/domain/repositories/search_props_repo.dart';
 import 'package:clean_arch/module/data/sources/properties/search_properties_source.dart';
 import 'package:clean_arch/module/domain/entities/properties/search_prop_entity.dart';
 
