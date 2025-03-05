@@ -12,10 +12,13 @@ class SearchPropsByAddressRepoImpl extends SearchPropertiesByAddressRepo {
     return searchProperties
         .map((prop) => SearchPropertyByAddressEntities(
               abbreviatedAddress: prop.abbreviatedAddress,
-              bathrooms: prop.bathrooms,
-              bedrooms: prop.bedrooms,
-              city: prop.city,
-              cityId: prop.cityId,
+              address: AddressEntity(
+                city: prop.address.city,
+                state: prop.address.state,
+                streetAddress: prop.address.streetAddress,
+                zipcode: prop.address.zipcode,
+              ),
+              
             ))
         .toList();
   }

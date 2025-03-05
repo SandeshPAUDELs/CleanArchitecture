@@ -1,7 +1,8 @@
-class SearchPropertyByAddressEntities {
+class ZPIDPropertyEntities {
   final String abbreviatedAddress;
   final AddressEntity address;
-  SearchPropertyByAddressEntities({
+
+  ZPIDPropertyEntities({
     required this.abbreviatedAddress,
     required this.address,
   });

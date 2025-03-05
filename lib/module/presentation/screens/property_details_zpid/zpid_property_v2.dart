@@ -1,19 +1,17 @@
-import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_bloc.dart';
-import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_event.dart';
-import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_state.dart';
+import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_bloc.dart';
+import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_event.dart';
+import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchPropertiesByAddress extends StatelessWidget {
-  const SearchPropertiesByAddress({super.key});
+class ZPIDPropertyV2 extends StatelessWidget {
+  const ZPIDPropertyV2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // return const Placeholder();
     final searchController = TextEditingController();
     return Scaffold(
-        body: 
-        Column(
+        body: Column(
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -26,22 +24,24 @@ class SearchPropertiesByAddress extends StatelessWidget {
             onSubmitted: (value) {
               if (value.isNotEmpty) {
                 context
-                    .read<SearchPropertiesByAddressBloc>()
-                    .add(FetchSearchPropertiesByAddress(address: value));
+                    .read<ZpidPropertiesV2Bloc>()
+                    .add(FetchZpidPropertiesV2(zpid: value));
               }
             },
           ),
         ),
         Expanded(
-          child: BlocBuilder<SearchPropertiesByAddressBloc,
-              SearchPropertiesByAddressState>(
+          child: BlocBuilder<ZpidPropertiesV2Bloc, ZpidPropertiesV2State>(
             builder: (context, state) {
-              if (state is SearchPropertiesByAddressInitial) {
+              if (state is ZpidPropertiesV2Initial) {
                 return const Center(child: Text('Enter an address to search'));
-              } else if (state is SearchPropertiesByAddressLoading) {
+              } else if (state is ZpidPropertiesV2Loading) {
                 return const Center(child: CircularProgressIndicator());
-              } else if (state is SearchPropertiesByAddressLoaded) {
-                final properties = state.searchProperties;
+              } else if (state is ZpidPropertiesV2Loaded) {
+                final properties = state.zpidProperties;
+                if (properties.isEmpty) {
+                  return const Center(child: Text('No properties found'));
+                }
                 return ListView.builder(
                   itemCount: properties.length,
                   itemBuilder: (context, index) {
@@ -60,7 +60,7 @@ class SearchPropertiesByAddress extends StatelessWidget {
                     );
                   },
                 );
-              } else if (state is SearchPropertiesByAddressError) {
+              } else if (state is ZpidPropertiesV2Error) {
                 return Center(child: Text(state.message));
               }
               return Container();

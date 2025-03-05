@@ -15,6 +15,10 @@ class HomeScreen extends StatelessWidget {
         'title': 'Properties Search by Address',
         'route': AppRoutesName.searchAddress,
       },
+      {
+        'title': 'ZPID Properties',
+        'route': AppRoutesName.zpidSchool,
+      }
     ];
     return Scaffold(
       appBar: AppBar(

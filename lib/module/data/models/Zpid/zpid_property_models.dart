@@ -1,17 +1,19 @@
-class SearchProprtiedByAddressProperyModels {
+class ZpidPropertyModels {
   final String abbreviatedAddress;
   final AddressModel address;
 
-  SearchProprtiedByAddressProperyModels({
+  ZpidPropertyModels({
     required this.abbreviatedAddress,
     required this.address,
   });
-  factory SearchProprtiedByAddressProperyModels.fromJson(Map<String, dynamic> json) {
-    return SearchProprtiedByAddressProperyModels(
+
+  factory ZpidPropertyModels.fromJson(Map<String, dynamic> json) {
+    return ZpidPropertyModels(
       abbreviatedAddress: json['abbreviatedAddress'],
       address: AddressModel.fromJson(json['address']),
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
       'abbreviatedAddress': abbreviatedAddress,

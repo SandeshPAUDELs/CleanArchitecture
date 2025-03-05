@@ -4,7 +4,7 @@ import 'package:clean_arch/module/presentation/screens/lenders/lenders_details.d
 import 'package:clean_arch/module/presentation/screens/lenders/lenders_search.dart';
 import 'package:clean_arch/module/presentation/screens/properties/search_properties.dart';
 import 'package:clean_arch/module/presentation/screens/properties/search_properties_by_address.dart';
-import 'package:clean_arch/module/presentation/screens/property_details_zpid/proprty_school.dart';
+import 'package:clean_arch/module/presentation/screens/property_details_zpid/zpid_property_v2.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -26,7 +26,7 @@ class Routes {
 
       case AppRoutesName.zpidSchool:
         return MaterialPageRoute(
-          builder: (context) => ZPIDPropertySchool(),
+          builder: (context) => ZPIDPropertyV2(),
         );
 
       case AppRoutesName.lendersSearch:
