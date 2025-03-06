@@ -1,3 +1,7 @@
+import 'package:clean_arch/common/style/common_style.dart';
+import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/describing_widget.dart';
+import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
 import 'package:clean_arch/module/presentation/bLoc/photo_properties/photo_propertied_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/photo_properties/photo_properties_event.dart';
 import 'package:clean_arch/module/presentation/bLoc/photo_properties/photo_properties_state.dart';
@@ -11,31 +15,28 @@ class PhotoProperty extends StatelessWidget {
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
     return Scaffold(
+      appBar: CustomAppBarTheme.appBarforPages(context, 'Photo Properties'),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchController,
-              decoration: const InputDecoration(
-                labelText: 'Search by address',
-                border: OutlineInputBorder(),
-              ),
-              onSubmitted: (value) {
-                if (value.isNotEmpty) {
-                  context
-                      .read<PhotoPropertiesBloc>()
-                      .add(FetchPhotoPropertiesEvent(zpid: value));
-                }
-              },
-            ),
+            padding: const EdgeInsets.all(CommonStyle.screenPadding),
+            child: TextFieldsTheme.createTextField(
+                context, searchController, 'Enter ZPID', (value) {
+              if (value.isNotEmpty) {
+                context
+                    .read<PhotoPropertiesBloc>()
+                    .add(FetchPhotoPropertiesEvent(zpid: value));
+              }
+            }),
           ),
           Expanded(
             child: BlocBuilder<PhotoPropertiesBloc, PhotoPropertiesState>(
               builder: (context, state) {
                 if (state is PhotoPropertiesInitial) {
-                  return const Center(
-                      child: Text('Enter an address to search'));
+                  return HintDescriptionWidget(
+                      title: 'Search Photo Properties',
+                      subtitle: 'Enter your ZPID to get the Photo Properties',
+                      icon: Icons.search);
                 } else if (state is PhotoPropertiesLoading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is PhotoPropertiesLoaded) {

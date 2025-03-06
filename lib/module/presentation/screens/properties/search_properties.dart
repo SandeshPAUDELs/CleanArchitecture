@@ -1,3 +1,7 @@
+import 'package:clean_arch/common/style/common_style.dart';
+import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/describing_widget.dart';
+import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties/search_properties_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties/search_properties_event.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties/search_properties_state.dart';
@@ -11,34 +15,25 @@ class SearchProperties extends StatelessWidget {
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search Properties'),
-      ),
+      appBar: CustomAppBarTheme.appBarforPages(context, 'Properties by Location'),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchController,
-              decoration: const InputDecoration(
-                labelText: 'Search by location',
-                border: OutlineInputBorder(),
-              ),
-              onSubmitted: (value) {
-                if (value.isNotEmpty) {
-                  context
-                      .read<SearchPropertiesBloc>()
-                      .add(FetchSearchProperties(location: value));
-                }
-              },
-            ),
+            padding: EdgeInsets.all(CommonStyle.screenPadding),
+            child: TextFieldsTheme.createTextField(
+                context, searchController, 'Search', (value) {
+              if (value.isNotEmpty) {
+                context
+                    .read<SearchPropertiesBloc>()
+                    .add(FetchSearchProperties(location: value));
+              }
+            }),
           ),
           Expanded(
             child: BlocBuilder<SearchPropertiesBloc, SearchPropertiesState>(
               builder: (context, state) {
                 if (state is SearchPropertiesInitial) {
-                  return const Center(
-                      child: Text('Enter a location to search'));
+                  return HintDescriptionWidget(title: 'Search Propertied', subtitle: 'Enter Your Location to Search Properties', icon: Icons.search);
                 } else if (state is SearchPropertiesLoading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is SearchPropertiesLoaded) {

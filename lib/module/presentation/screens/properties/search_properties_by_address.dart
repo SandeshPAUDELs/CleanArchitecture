@@ -1,3 +1,7 @@
+import 'package:clean_arch/common/style/common_style.dart';
+import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/describing_widget.dart';
+import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_event.dart';
 import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_state.dart';
@@ -9,35 +13,31 @@ class SearchPropertiesByAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return const Placeholder();
     final searchController = TextEditingController();
     return Scaffold(
-        body: 
-        Column(
+      appBar: CustomAppBarTheme.appBarforPages(context, 'Properties with Address'),
+        body: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller: searchController,
-            decoration: const InputDecoration(
-              labelText: 'Search by address',
-              border: OutlineInputBorder(),
-            ),
-            onSubmitted: (value) {
-              if (value.isNotEmpty) {
-                context
-                    .read<SearchPropertiesByAddressBloc>()
-                    .add(FetchSearchPropertiesByAddress(address: value));
-              }
-            },
-          ),
+          padding: const EdgeInsets.all(CommonStyle.screenPadding),
+          child: TextFieldsTheme.createTextField(
+              context, searchController, 'search', (value) {
+            if (value.isNotEmpty) {
+              context
+                  .read<SearchPropertiesByAddressBloc>()
+                  .add(FetchSearchPropertiesByAddress(address: value));
+            }
+          }),
         ),
         Expanded(
           child: BlocBuilder<SearchPropertiesByAddressBloc,
               SearchPropertiesByAddressState>(
             builder: (context, state) {
               if (state is SearchPropertiesByAddressInitial) {
-                return const Center(child: Text('Enter an address to search'));
+                return HintDescriptionWidget(
+                    title: 'Search Property Details',
+                    subtitle: 'Enter your Address to get the Property Details',
+                    icon: Icons.search);
               } else if (state is SearchPropertiesByAddressLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is SearchPropertiesByAddressLoaded) {

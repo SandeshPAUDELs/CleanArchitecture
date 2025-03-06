@@ -1,3 +1,7 @@
+import 'package:clean_arch/common/style/common_style.dart';
+import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/describing_widget.dart';
+import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
 import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_event.dart';
 import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_state.dart';
@@ -11,30 +15,25 @@ class ZPIDPropertyV2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final searchController = TextEditingController();
     return Scaffold(
+      appBar: CustomAppBarTheme.appBarforPages(context, 'ZPID Properties'),
         body: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller: searchController,
-            decoration: const InputDecoration(
-              labelText: 'Search by address',
-              border: OutlineInputBorder(),
-            ),
-            onSubmitted: (value) {
-              if (value.isNotEmpty) {
-                context
-                    .read<ZpidPropertiesV2Bloc>()
+          padding: const EdgeInsets.all(CommonStyle.screenPadding),
+          child: TextFieldsTheme.createTextField(
+              context, searchController, 'search', (value) {
+            if (value.isNotEmpty) {
+              context
+                  .read<ZpidPropertiesV2Bloc>()
                     .add(FetchZpidPropertiesV2(zpid: value));
-              }
-            },
-          ),
+            }
+          }),
         ),
         Expanded(
           child: BlocBuilder<ZpidPropertiesV2Bloc, ZpidPropertiesV2State>(
             builder: (context, state) {
               if (state is ZpidPropertiesV2Initial) {
-                return const Center(child: Text('Enter an address to search'));
+                return HintDescriptionWidget(title: 'Search Property Details', subtitle: 'Enter your Zpid to get the Property Details', icon: Icons.search);
               } else if (state is ZpidPropertiesV2Loading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is ZpidPropertiesV2Loaded) {

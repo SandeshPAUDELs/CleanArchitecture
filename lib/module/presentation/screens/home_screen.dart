@@ -1,3 +1,4 @@
+import 'package:clean_arch/common/widgets/app_bar_widget.dart';
 import 'package:clean_arch/core/config/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
@@ -23,12 +24,14 @@ class HomeScreen extends StatelessWidget {
         'title': 'Photo Properties',
         'route': AppRoutesName.photoProperties,
       },
+      {
+        'title': 'Search Agents',
+        'route': AppRoutesName.searchAgents,
+      },
       
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home Screen"),
-      ),
+      appBar: CustomAppBarTheme.appBarforPages(context, 'Home'),
       body: ListView.builder(
         itemCount: screens.length,
         itemBuilder: (context, index) {

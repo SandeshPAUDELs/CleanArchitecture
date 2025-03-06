@@ -1,7 +1,6 @@
 import 'package:clean_arch/core/config/routes/routes_name.dart';
+import 'package:clean_arch/module/presentation/screens/agents/search_agents.dart';
 import 'package:clean_arch/module/presentation/screens/home_screen.dart';
-import 'package:clean_arch/module/presentation/screens/lenders/lenders_details.dart';
-import 'package:clean_arch/module/presentation/screens/lenders/lenders_search.dart';
 import 'package:clean_arch/module/presentation/screens/properties/search_properties.dart';
 import 'package:clean_arch/module/presentation/screens/properties/search_properties_by_address.dart';
 import 'package:clean_arch/module/presentation/screens/property_details_zpid/photo_property.dart';
@@ -34,14 +33,10 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => PhotoProperty(),
         );
-      case AppRoutesName.lendersSearch:
+      
+      case AppRoutesName.searchAgents:
         return MaterialPageRoute(
-          builder: (context) => LendersSearch(),
-        );
-
-      case AppRoutesName.lendersDetail:
-        return MaterialPageRoute(
-          builder: (context) => LendersDetails(),
+          builder: (context) => SearchAgents(),
         );
       default:
         return MaterialPageRoute(builder: (context) {
