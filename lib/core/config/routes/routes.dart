@@ -1,4 +1,5 @@
 import 'package:clean_arch/core/config/routes/routes_name.dart';
+import 'package:clean_arch/module/presentation/screens/agents/agents_by_username.dart';
 import 'package:clean_arch/module/presentation/screens/agents/search_agents.dart';
 import 'package:clean_arch/module/presentation/screens/home_screen.dart';
 import 'package:clean_arch/module/presentation/screens/properties/search_properties.dart';
@@ -37,6 +38,11 @@ class Routes {
       case AppRoutesName.searchAgents:
         return MaterialPageRoute(
           builder: (context) => SearchAgents(),
+        );
+
+      case AppRoutesName.searchAgentsByUsername:
+        return MaterialPageRoute(
+          builder: (context) => AgentsByUsername(),
         );
       default:
         return MaterialPageRoute(builder: (context) {

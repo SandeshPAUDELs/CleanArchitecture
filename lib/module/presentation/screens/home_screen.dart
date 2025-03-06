@@ -28,6 +28,10 @@ class HomeScreen extends StatelessWidget {
         'title': 'Search Agents',
         'route': AppRoutesName.searchAgents,
       },
+      {
+        'title': 'Search Agents by Username',
+        'route': AppRoutesName.searchAgentsByUsername,
+      },
       
     ];
     return Scaffold(

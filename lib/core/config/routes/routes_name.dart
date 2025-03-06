@@ -5,5 +5,5 @@ class AppRoutesName {
    static const String zpidSchool = "zpid_school";
    static const String photoProperties = "photo_properties";
    static const String searchAgents = "search_agents";
-   static const String searchAgentsByLocation = "search_agents_by_location";
+   static const String searchAgentsByUsername = "search_agents_by_username";
 }

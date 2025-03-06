@@ -6,10 +6,11 @@ import 'package:http/http.dart' as http;
 abstract class PhotoPropertySource {
   Future<List<PhotosModels>> getPhotoProperties(String zpid);
 }
+
 class PhotoPropertySourceImpl implements PhotoPropertySource {
   final String baseUrl = "https://zillow56.p.rapidapi.com/photos";
   final Map<String, String> headers = {
-    'X-RapidAPI-Key': 'b473dbb3d6msh16152b477050dffp18a13cjsn2e8a176321a1',
+    'X-RapidAPI-Key': 'f57770540fmsh1f74affde05a581p1e08d9jsnf0a2dd66235f',
     'X-RapidAPI-Host': 'zillow56.p.rapidapi.com',
   };
 
