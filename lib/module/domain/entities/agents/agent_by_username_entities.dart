@@ -1,10 +1,10 @@
 class AgentByUsernameEntities {
   final String currentUrl;
-  // final DisplayUserEntities displayUser;
+  final DisplayUserEntities displayUser;
 
   AgentByUsernameEntities({
     required this.currentUrl,
-    // required this.displayUser,
+    required this.displayUser,
   });
 }
 
@@ -14,7 +14,7 @@ class DisplayUserEntities {
   final String email;
   final PhoneNumbersEntities phoneNumbers;
   final String profilePhotoSrc;
-  final String zGuid;
+  // final String zGuid;
 
   DisplayUserEntities({
     required this.businessAddress,
@@ -22,7 +22,7 @@ class DisplayUserEntities {
     required this.email,
     required this.phoneNumbers,
     required this.profilePhotoSrc,
-    required this.zGuid,
+    // required this.zGuid,
   });  
 }
 

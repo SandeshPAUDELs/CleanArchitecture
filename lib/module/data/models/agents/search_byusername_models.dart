@@ -1,23 +1,23 @@
 class AgentByUsernameModels {
   final String currentUrl;
-  // final DisplayUserModels displayUser;
+  final DisplayUserModels displayUser;
 
   AgentByUsernameModels({
     required this.currentUrl,
-    // required this.displayUser,
+    required this.displayUser,
   });
 
   factory AgentByUsernameModels.fromJson(Map<String, dynamic> json) {
     return AgentByUsernameModels(
       currentUrl: json['currentUrl'],
-      // displayUser: DisplayUserModels.fromJson(json['displayUser']),
+      displayUser: DisplayUserModels.fromJson(json['displayUser']),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'currentUrl': currentUrl,
-      // 'displayUser': displayUser.toJson(),
+      'displayUser': displayUser.toJson(),
     };
   }
 }
@@ -28,7 +28,7 @@ class DisplayUserModels {
   final String email;
   final PhoneNumbersModels phoneNumbers;
   final String profilePhotoSrc;
-  final String zGuid;
+  // final String zGuid;
 
   DisplayUserModels({
     required this.businessAddress,
@@ -36,7 +36,7 @@ class DisplayUserModels {
     required this.email,
     required this.phoneNumbers,
     required this.profilePhotoSrc,
-    required this.zGuid,
+    // required this.zGuid,
   });
 
   factory DisplayUserModels.fromJson(Map<String, dynamic> json) {
@@ -46,7 +46,7 @@ class DisplayUserModels {
       email: json['email'],
       phoneNumbers: PhoneNumbersModels.fromJson(json['phoneNumbers']),
       profilePhotoSrc: json['profilePhotoSrc'],
-      zGuid: json['zGuid'],
+    //   zGuid: json['zGuid'],
     );
   }
 
@@ -57,7 +57,7 @@ class DisplayUserModels {
       'email': email,
       'phoneNumbers': phoneNumbers.toJson(),
       'profilePhotoSrc': profilePhotoSrc,
-      'zGuid': zGuid,
+      // 'zGuid': zGuid,
     };
   }
 }

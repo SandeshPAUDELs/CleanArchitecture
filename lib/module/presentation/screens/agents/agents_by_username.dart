@@ -45,19 +45,19 @@ class AgentsByUsername extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final agent = agents[index];
                       return ListTile(
-                      // title: Text(agent.displayUser.businessName),
-                      // subtitle: Column(
-                      //   crossAxisAlignment: CrossAxisAlignment.start,
-                      //   children: [
-                      //   Text('Email: ${agent.displayUser.email}'),
-                      //   Text('Phone: ${agent.displayUser.phoneNumbers.business}'),
-                      //   Text('Address: ${agent.displayUser.businessAddress.address1}, ${agent.displayUser.businessAddress.city}, ${agent.displayUser.businessAddress.state}, ${agent.displayUser.businessAddress.postalCode}'),
-                      //   ],
-                      // ),
-                      // leading: CircleAvatar(
-                      //   backgroundImage: NetworkImage(agent.displayUser.profilePhotoSrc),
-                      // ),
-                      title: Text(agent.currentUrl),
+                      title: Text(agent.displayUser.businessName),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                        Text('Email: ${agent.displayUser.email}'),
+                        Text('Phone: ${agent.displayUser.phoneNumbers.business}'),
+                        Text('Address: ${agent.displayUser.businessAddress.address1}, ${agent.displayUser.businessAddress.city}, ${agent.displayUser.businessAddress.state}, ${agent.displayUser.businessAddress.postalCode}'),
+                        ],
+                      ),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(agent.displayUser.profilePhotoSrc),
+                      ),
+                      trailing: Text(agent.currentUrl),
                       );
                     },
                     );
