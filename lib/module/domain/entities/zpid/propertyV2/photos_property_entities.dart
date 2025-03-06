@@ -1,32 +1,35 @@
 class PhotosEntities {
-  final String caption;
-  final MixedSourcesEntities mixedSources;
+  final String? caption;
+  final MixedSourcesEntities? mixedSources;
   PhotosEntities({
-    required this.caption,
-    required this.mixedSources,
+    this.caption,
+    this.mixedSources,
   });
 }
+
 class MixedSourcesEntities {
-  final JpegImages jpegImages; 
-  final WebpImages webpImages;
+  final List<JpegImages>? jpegImages;
+  final List<WebpImages>? webpImages;
   MixedSourcesEntities({
-    required this.jpegImages,
-    required this.webpImages,
+    this.jpegImages,
+    this.webpImages,
   });
 }
+
 class JpegImages {
-  final String url;
-  final int width;
+  final String? url;
+  final int? width;
   JpegImages({
-    required this.url,
-    required this.width,
+    this.url,
+    this.width,
   });
 }
+
 class WebpImages {
-  final String url;
-  final int width;
+  final String? url;
+  final int? width;
   WebpImages({
-    required this.url,
-    required this.width,
+    this.url,
+    this.width,
   });
 }
