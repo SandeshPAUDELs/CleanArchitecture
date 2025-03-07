@@ -10,7 +10,7 @@ class SearchPropertiesDataSourceImpl extends SearchPropertiesDataSource {
   final String baseUrl = "https://zillow56.p.rapidapi.com/search";
 
   final Map<String, String> headers = {
-    'X-RapidAPI-Key': 'f57770540fmsh1f74affde05a581p1e08d9jsnf0a2dd66235f',
+    'X-RapidAPI-Key': '90e84c20fdmsha89ac49f7b3c9dap102541jsn2134949ee596',
     'X-RapidAPI-Host': 'zillow56.p.rapidapi.com',
   };
 

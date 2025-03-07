@@ -1,5 +1,6 @@
 import 'package:clean_arch/common/style/common_style.dart';
 import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/containers_widget.dart';
 import 'package:clean_arch/common/widgets/describing_widget.dart';
 import 'package:clean_arch/common/widgets/nav-drawer.dart';
 import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
@@ -48,22 +49,13 @@ class SearchProperties extends StatelessWidget {
                     itemCount: properties.length,
                     itemBuilder: (context, index) {
                       final property = properties[index];
-                      return ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(property.imgSrc ?? ''),
-                        ),
-                        title: Text(property.country),
-                        subtitle:
-                            Text('${property.city}, ${property.currency}'),
-                        trailing: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor),
-                            borderRadius: BorderRadius.circular(CommonStyle.smallBorderRadius),
-                          ),
-                          child: Text(property.homeStatus),
-                        ),
-                      );
+                      return ContainersforPages.containerforSearchProperties(
+                          context,
+                          property.imgSrc ?? '',
+                          property.country,
+                          property.city,
+                          property.currency,
+                          property.homeStatus);
                     },
                   );
                 } else if (state is SearchPropertiesError) {

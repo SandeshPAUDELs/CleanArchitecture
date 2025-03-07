@@ -46,38 +46,118 @@ class PhotoProperty extends StatelessWidget {
                   if (properties.isEmpty) {
                     return const Center(child: Text('No properties found'));
                   }
-                  return ListView.builder(
-                    itemCount: properties.length,
-                    itemBuilder: (context, index) {
-                      final property = properties[index];
-                      return ListTile(
-                        title: Text(property.caption ?? 'No Caption'),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ...property.mixedSources!.jpegImages!
-                                .map((jpeg) => Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Image.network(jpeg.url ?? ''),
-                                        Text('JPEG Image Width: ${jpeg.width}'),
-                                      ],
-                                    )),
-                            Text('WebP Image'),
-                            ...property.mixedSources!.webpImages!
-                                .map((webp) => Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Image.network(webp.url ?? ''),
-                                        Text('WebP Image Width: ${webp.width}'),
-                                      ],
-                                    )),
-                          ],
-                        ),
-                      );
-                    },
+                  return Padding(
+                    padding: const EdgeInsets.all(CommonStyle.screenPadding),
+                    child: ListView.builder(
+                      itemCount: properties.length,
+                      itemBuilder: (context, index) {
+                        final property = properties[index];
+                        return ListTile(
+                          title: Text(property.caption ?? 'No Caption'),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(
+                                    CommonStyle.smallPadding),
+                                child: Text(
+                                  'Jpeg Image',
+                                  style:
+                                      Theme.of(context).textTheme.headlineSmall,
+                                ),
+                              ),
+                              ...property.mixedSources!.jpegImages!
+                                  .map((jpeg) => Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          GridView.builder(
+                                            shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              crossAxisSpacing: 10,
+                                              mainAxisSpacing: 10,
+                                            ),
+                                            itemCount: property.mixedSources!
+                                                .jpegImages!.length,
+                                            itemBuilder: (context, index) {
+                                              final jpeg = property
+                                                  .mixedSources!
+                                                  .jpegImages![index];
+                                              return ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        CommonStyle
+                                                            .smallBorderRadius),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Image.network(
+                                                        jpeg.url ?? ''),
+                                                    Text(
+                                                        'Width: ${jpeg.width}'),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      )),
+                              Text(
+                                'WebP Image',
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                              ),
+                              ...property.mixedSources!.webpImages!
+                                  .map((webp) => Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          GridView.builder(
+                                            shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              crossAxisSpacing: 10,
+                                              mainAxisSpacing: 10,
+                                            ),
+                                            itemCount: property.mixedSources!
+                                                .webpImages!.length,
+                                            itemBuilder: (context, index) {
+                                              final webp = property
+                                                  .mixedSources!
+                                                  .webpImages![index];
+                                              return ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        CommonStyle
+                                                            .smallBorderRadius),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Image.network(
+                                                        webp.url ?? ''),
+                                                    Text(
+                                                        'Width: ${webp.width}'),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      )),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   );
                 } else if (state is PhotoPropertiesError) {
                   return Center(child: Text(state.message));

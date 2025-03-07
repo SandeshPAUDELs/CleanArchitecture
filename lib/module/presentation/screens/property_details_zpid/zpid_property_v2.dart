@@ -1,5 +1,6 @@
 import 'package:clean_arch/common/style/common_style.dart';
 import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/containers_widget.dart';
 import 'package:clean_arch/common/widgets/describing_widget.dart';
 import 'package:clean_arch/common/widgets/nav-drawer.dart';
 import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
@@ -43,23 +44,23 @@ class ZPIDPropertyV2 extends StatelessWidget {
                 if (properties.isEmpty) {
                   return const Center(child: Text('No properties found'));
                 }
-                return ListView.builder(
-                  itemCount: properties.length,
-                  itemBuilder: (context, index) {
-                    final property = properties[index];
-                    return ListTile(
-                      title: Text(property.abbreviatedAddress),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('City: ${property.address.city}'),
-                          Text('State: ${property.address.state}'),
-                          Text('Street: ${property.address.streetAddress}'),
-                          Text('Zipcode: ${property.address.zipcode}'),
-                        ],
-                      ),
-                    );
-                  },
+                return Padding(
+                  padding: const EdgeInsets.all(CommonStyle.screenPadding),
+                  child: ListView.builder(
+                    itemCount: properties.length,
+                    itemBuilder: (context, index) {
+                      final property = properties[index];
+                      
+                      return ContainersforPages.containerforZpidProperties(
+                        context,
+                        property.abbreviatedAddress,
+                        property.address.city,
+                        property.address.state,
+                        property.address.streetAddress,
+                        property.address.zipcode,
+                      );
+                    },
+                  ),
                 );
               } else if (state is ZpidPropertiesV2Error) {
                 return Center(child: Text(state.message));

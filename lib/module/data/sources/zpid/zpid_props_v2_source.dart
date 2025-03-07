@@ -10,7 +10,7 @@ abstract class ZpidPropsV2DataSource {
 class ZpidPropsV2SourceImpl extends ZpidPropsV2DataSource {
   final String baseUrl = "https://zillow56.p.rapidapi.com/propertyV2";
   final Map<String, String> headers = {
-    'X-RapidAPI-Key': 'f57770540fmsh1f74affde05a581p1e08d9jsnf0a2dd66235f',
+    'X-RapidAPI-Key': '90e84c20fdmsha89ac49f7b3c9dap102541jsn2134949ee596',
     'X-RapidAPI-Host': 'zillow56.p.rapidapi.com',
   };
   @override

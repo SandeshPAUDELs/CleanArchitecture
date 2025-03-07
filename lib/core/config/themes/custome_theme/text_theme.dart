@@ -36,7 +36,7 @@ class TextThemes {
       ),
       
       bodyMedium: TextStyle(
-        fontSize: 14,
+        fontSize: 12,
         color: Theme.of(context).colorScheme.onSurface,
         overflow: TextOverflow.ellipsis,
       ),

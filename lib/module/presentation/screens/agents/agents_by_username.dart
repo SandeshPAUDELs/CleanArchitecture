@@ -46,30 +46,51 @@ class AgentsByUsername extends StatelessWidget {
                     if (agents.isEmpty) {
                       return const Center(child: Text('No agents found'));
                     }
-                    return ListView.builder(
-                      itemCount: agents.length,
-                      itemBuilder: (context, index) {
-                        final agent = agents[index];
-                        return Column(
-                          children: [
-                            Text(agent.displayUser.businessName),
-                            Text('Email: ${agent.displayUser.email}'),
-                            Text(
-                                'Phone: ${agent.displayUser.phoneNumbers.business}'),
-                            Text(
-                                'Address: ${agent.displayUser.businessAddress.address1}, ${agent.displayUser.businessAddress.city}, ${agent.displayUser.businessAddress.state}, ${agent.displayUser.businessAddress.postalCode}'),
-                            ListTile(
-                              title: Text(agent.displayUser.businessName),
-                              
-                              leading: CircleAvatar(
+                    return Padding(
+                      padding: const EdgeInsets.all(CommonStyle.screenPadding),
+                      child: ListView.builder(
+                        itemCount: agents.length,
+                        itemBuilder: (context, index) {
+                          final agent = agents[index];
+                          return Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 100,
                                 backgroundImage: NetworkImage(
                                     agent.displayUser.profilePhotoSrc),
                               ),
-                              trailing: Text(agent.currentUrl),
-                            ),
-                          ],
-                        );
-                      },
+                              Text(
+                                agent.displayUser.businessName,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
+                                maxLines: 1,
+                              ),
+                              Text(
+                                'url: ${agent.currentUrl}',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                        color: Colors.blue,
+                                        fontStyle: FontStyle.italic,
+                                        decoration: TextDecoration.underline),
+                                maxLines: 1,
+                              ),
+                              Text('Email: ${agent.displayUser.email}',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium),
+                              Text(
+                                  'Phone: ${agent.displayUser.phoneNumbers.business}',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium),
+                              Text(
+                                  'Address: ${agent.displayUser.businessAddress.address1}, ${agent.displayUser.businessAddress.city}, ${agent.displayUser.businessAddress.state}, ${agent.displayUser.businessAddress.postalCode}',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium),
+                            ],
+                          );
+                        },
+                      ),
                     );
                   } else if (state is AgentsByUsernameError) {
                     return Center(child: Text(state.message));
