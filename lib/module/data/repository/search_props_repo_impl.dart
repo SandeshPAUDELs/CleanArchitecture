@@ -18,6 +18,7 @@ class SearchPropsRepoImpl extends SearchPropsRepositoy{
       currency: prop.currency,
       daysOnZillow: prop.daysOnZillow,
       homeStatus: prop.homeStatus,
+      imgSrc: prop.imgSrc,
     )).toList();
     
   }

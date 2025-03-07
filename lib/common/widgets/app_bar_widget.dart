@@ -11,7 +11,7 @@ class CustomAppBarTheme {
             .headlineSmall
             ?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
       ),
-      elevation: 20.0, 
+      elevation: 20.0,
       shadowColor: Theme.of(context).colorScheme.shadow,
       toolbarHeight:
           kToolbarHeight + (MediaQuery.of(context).size.height * 0.01),
@@ -19,10 +19,10 @@ class CustomAppBarTheme {
         return IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {
+            Scaffold.of(context).openDrawer();
           },
         );
       }),
     );
-
   }
 }

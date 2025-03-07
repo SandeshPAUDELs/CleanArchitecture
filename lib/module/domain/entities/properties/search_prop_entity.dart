@@ -6,6 +6,7 @@ class SearchPropertyEntities {
   final String currency;
   final int daysOnZillow;
   final String homeStatus;
+  final String ? imgSrc;
   SearchPropertyEntities({
     required this.bathrooms,
     required this.bedrooms,
@@ -14,5 +15,6 @@ class SearchPropertyEntities {
     required this.currency,
     required this.daysOnZillow,
     required this.homeStatus,
+    required this.imgSrc,
   });
 }

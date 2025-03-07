@@ -6,6 +6,7 @@ class SearchPropertyModels {
   final String currency;
   final int daysOnZillow;
   final String homeStatus;
+  final String imgSrc;
 
   SearchPropertyModels({
     required this.bathrooms,
@@ -15,6 +16,7 @@ class SearchPropertyModels {
     required this.currency,
     required this.daysOnZillow,
     required this.homeStatus,
+    required this.imgSrc,
   });
 
   factory SearchPropertyModels.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class SearchPropertyModels {
       currency: json['currency'] ?? '',
       daysOnZillow: json['daysOnZillow'] ?? 0,
       homeStatus: json['homeStatus'] ?? '',
+      imgSrc: json['imgSrc'] ?? '',
     );
   }
 
@@ -38,6 +41,7 @@ class SearchPropertyModels {
       'currency': currency,
       'daysOnZillow': daysOnZillow,
       'homeStatus': homeStatus,
+      'imgSrc': imgSrc,
     };
   }
 }

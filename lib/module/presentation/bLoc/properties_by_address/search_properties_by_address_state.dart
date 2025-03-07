@@ -9,12 +9,12 @@ class SearchPropertiesByAddressState extends Equatable{
 }
 class SearchPropertiesByAddressInitial extends SearchPropertiesByAddressState{}
 class SearchPropertiesByAddressLoading extends SearchPropertiesByAddressState{}
-class SearchPropertiesByAddressLoaded extends SearchPropertiesByAddressState{
+class SearchPropertiesByAddressLoaded extends SearchPropertiesByAddressState {
   final List<SearchPropertyByAddressEntities> searchProperties;
   SearchPropertiesByAddressLoaded({required this.searchProperties});
+
   @override
   List<Object?> get props => [searchProperties];
-
 }
 class SearchPropertiesByAddressError extends SearchPropertiesByAddressState{
   final String message;

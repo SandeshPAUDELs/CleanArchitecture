@@ -1,9 +1,13 @@
 class SearchPropertyByAddressEntities {
   final String abbreviatedAddress;
   final AddressEntity address;
+  final String description;
+  final String desktopWebHdpImageLink;
   SearchPropertyByAddressEntities({
     required this.abbreviatedAddress,
     required this.address,
+    required this.description,
+    required this.desktopWebHdpImageLink,
   });
 }
 

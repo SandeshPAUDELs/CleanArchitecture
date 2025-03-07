@@ -1,6 +1,7 @@
 import 'package:clean_arch/common/style/common_style.dart';
 import 'package:clean_arch/common/widgets/app_bar_widget.dart';
 import 'package:clean_arch/common/widgets/describing_widget.dart';
+import 'package:clean_arch/common/widgets/nav-drawer.dart';
 import 'package:clean_arch/core/config/themes/custome_theme/text_field_theme.dart';
 import 'package:clean_arch/module/presentation/bLoc/photo_properties/photo_propertied_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/photo_properties/photo_properties_event.dart';
@@ -16,6 +17,7 @@ class PhotoProperty extends StatelessWidget {
     final searchController = TextEditingController();
     return Scaffold(
       appBar: CustomAppBarTheme.appBarforPages(context, 'Photo Properties'),
+      drawer: NavDrawer(),
       body: Column(
         children: [
           Padding(

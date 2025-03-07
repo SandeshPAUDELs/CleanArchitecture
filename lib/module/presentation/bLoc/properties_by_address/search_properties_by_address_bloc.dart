@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchPropertiesByAddressBloc extends Bloc<FetchSearchPropertiesByAddress, SearchPropertiesByAddressState> {
   final SearchPropsByAddressUsecases searchPropsByAddressUsecases;
-  SearchPropertiesByAddressBloc({required this.searchPropsByAddressUsecases}) : super(SearchPropertiesByAddressInitial()) {
+
+  SearchPropertiesByAddressBloc({required this.searchPropsByAddressUsecases}) 
+    : super(SearchPropertiesByAddressInitial()) {
     on<FetchSearchPropertiesByAddress>((event, emit) async {
       emit(SearchPropertiesByAddressLoading());
       try {
@@ -16,5 +18,4 @@ class SearchPropertiesByAddressBloc extends Bloc<FetchSearchPropertiesByAddress,
       }
     });
   }
-
 }

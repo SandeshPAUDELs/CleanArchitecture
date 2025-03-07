@@ -1,4 +1,5 @@
 import 'package:clean_arch/common/widgets/app_bar_widget.dart';
+import 'package:clean_arch/common/widgets/nav-drawer.dart';
 import 'package:clean_arch/core/config/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ class HomeScreen extends StatelessWidget {
     ];
     return Scaffold(
       appBar: CustomAppBarTheme.appBarforPages(context, 'Home'),
+      drawer: NavDrawer(),
       body: ListView.builder(
         itemCount: screens.length,
         itemBuilder: (context, index) {

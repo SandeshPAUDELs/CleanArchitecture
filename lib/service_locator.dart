@@ -29,6 +29,7 @@ import 'package:clean_arch/module/presentation/bLoc/properties/search_properties
 import 'package:clean_arch/module/presentation/bLoc/properties_by_address/search_properties_by_address_bloc.dart';
 import 'package:clean_arch/module/presentation/bLoc/zpid_properties_v2/zpid_properties_v2_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
 // final GetIt sl = GetIt.instance;
 // void initializeServiceLocator() {
 //   // Bloc
@@ -43,12 +44,13 @@ import 'package:get_it/get_it.dart';
 
 final GetIt sl = GetIt.instance;
 void initializeServiceLocator() {
+  sl.registerSingleton(http.Client());  
   // Data source
   sl.registerLazySingleton<SearchPropertiesDataSource>(() => SearchPropertiesDataSourceImpl());
   sl.registerLazySingleton<SearchPropertiesByAddressDataSource>(() => SearchPropertiesByAddressDataSourceImpl());
   sl.registerLazySingleton<ZpidPropsV2DataSource>(() => ZpidPropsV2SourceImpl());
   sl.registerLazySingleton<PhotoPropertySource>(() => PhotoPropertySourceImpl());
-  sl.registerLazySingleton<SearchAgentsDataSource>(() => SearchAgentsDataSourceImpl());
+  sl.registerLazySingleton<SearchAgentsDataSource>(() => SearchAgentsDataSourceImpl(sl()));
   sl.registerLazySingleton<AgentsByUsernameSource>(() => AgentsByUsernameSourceImpl());
   // Repository
   sl.registerLazySingleton<SearchPropsRepositoy>(() => SearchPropsRepoImpl(sl()));

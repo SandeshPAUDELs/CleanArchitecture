@@ -5,21 +5,20 @@ import 'package:clean_arch/module/domain/repositories/search_by_address_repo.dar
 class SearchPropsByAddressRepoImpl extends SearchPropertiesByAddressRepo {
   final SearchPropertiesByAddressDataSource dataSource;
   SearchPropsByAddressRepoImpl(this.dataSource);
+
   @override
-  Future<List<SearchPropertyByAddressEntities>> fetchSearchByAddress(
-      String address) async {
+  Future<List<SearchPropertyByAddressEntities>> fetchSearchByAddress(String address) async {
     final searchProperties = await dataSource.fetchSearchByAddress(address);
-    return searchProperties
-        .map((prop) => SearchPropertyByAddressEntities(
-              abbreviatedAddress: prop.abbreviatedAddress,
-              address: AddressEntity(
-                city: prop.address.city,
-                state: prop.address.state,
-                streetAddress: prop.address.streetAddress,
-                zipcode: prop.address.zipcode,
-              ),
-              
-            ))
-        .toList();
+    return searchProperties.map((prop) => SearchPropertyByAddressEntities(
+      abbreviatedAddress: prop.abbreviatedAddress,
+      description: prop.description,
+      desktopWebHdpImageLink: prop.desktopWebHdpImageLink,
+      address: AddressEntity(
+        city: prop.address.city,
+        state: prop.address.state,
+        streetAddress: prop.address.streetAddress,
+        zipcode: prop.address.zipcode,
+      ),
+    )).toList();
   }
 }

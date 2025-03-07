@@ -1,21 +1,31 @@
 class SearchProprtiedByAddressProperyModels {
   final String abbreviatedAddress;
   final AddressModel address;
+  final String description;
+  final String desktopWebHdpImageLink;
 
   SearchProprtiedByAddressProperyModels({
     required this.abbreviatedAddress,
     required this.address,
+    required this.description,
+    required this.desktopWebHdpImageLink,
   });
+
   factory SearchProprtiedByAddressProperyModels.fromJson(Map<String, dynamic> json) {
     return SearchProprtiedByAddressProperyModels(
       abbreviatedAddress: json['abbreviatedAddress'],
       address: AddressModel.fromJson(json['address']),
+      description: json['description'],
+      desktopWebHdpImageLink: json['desktopWebHdpImageLink'],
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
       'abbreviatedAddress': abbreviatedAddress,
       'address': address.toJson(),
+      'description': description,
+      'desktopWebHdpImageLink': desktopWebHdpImageLink,
     };
   }
 }

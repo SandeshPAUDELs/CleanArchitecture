@@ -1,8 +1,8 @@
+import 'package:clean_arch/core/config/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
-class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer
-({super.key});
+class NavDrawer extends StatelessWidget {
+  const NavDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,60 @@ class NavigationDrawer extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(title: Text('Search Property', style: textTheme.titleLarge,),)
+          GestureDetector(
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutesName.searchProperties),
+              child: ListTile(
+                title: Text(
+                  'Search Property',
+                  style: textTheme.titleLarge,
+                ),
+              )),
+          GestureDetector(
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutesName.searchAddress),
+              child: ListTile(
+                title: Text(
+                  'Search Property by Address',
+                  style: textTheme.titleLarge,
+                ),
+              )),
+          GestureDetector(
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutesName.zpidSchool),
+              child: ListTile(
+                title: Text(
+                  'ZPID Properties',
+                  style: textTheme.titleLarge,
+                ),
+              )),
+          GestureDetector(
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutesName.photoProperties),
+              child: ListTile(
+                title: Text(
+                  'Photo Properties',
+                  style: textTheme.titleLarge,
+                ),
+              )),
+          GestureDetector(
+              onTap: () =>
+                  Navigator.pushNamed(context, AppRoutesName.searchAgents),
+              child: ListTile(
+                title: Text(
+                  'Search Agents',
+                  style: textTheme.titleLarge,
+                ),
+              )),
+          GestureDetector(
+              onTap: () => Navigator.pushNamed(
+                  context, AppRoutesName.searchAgentsByUsername),
+              child: ListTile(
+                title: Text(
+                  'Search Agents by Username',
+                  style: textTheme.titleLarge,
+                ),
+              )),
         ],
       ),
     );
